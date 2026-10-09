@@ -1,0 +1,8 @@
+[submodule "kueue-main"]
+	path = kueue-main
+	url = git@github.com:kubernetes-sigs/kueue.git
+	branch = main
+[submodule "kueue-llm-wiki"]
+	path = kueue-llm-wiki
+	url = git@github.com:reruno/kueue-llm-wiki.git
+	branch = main
