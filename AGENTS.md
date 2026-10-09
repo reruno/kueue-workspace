@@ -32,6 +32,16 @@ Kueue's `.gitignore` ignores `testbin/*`, so this file is never committed.
 The developer is the sole owner and author of all code. Never add
 `Co-authored-by` trailers or any other AI attribution to commits, PRs, or code.
 
+Commit messages are concise, simple, and meaningful: say what changed and,
+when not obvious, why.
+
+## Approach to solutions
+
+Keep it simple (KISS): the solution should be as simple as possible, but not
+simpler. Solve the actual problem with the smallest clear change, prefer
+existing patterns and helpers over new abstractions, and avoid speculative
+generality. Don't cut corners on correctness, edge cases, or tests to get there.
+
 ## Answering questions
 
 When a question about Kueue comes up (architecture, scheduling, preemption,
