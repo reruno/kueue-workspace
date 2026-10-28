@@ -58,3 +58,5 @@ Review map - review document that splitted like book chapters, from start to fin
 When reviewing important features and code I would like to have a map, like a good book have start -> finish, the same TOC I want to have for files with explanation, I want to start manual review from entrypoint and have a good understanding and good story around the feature/code that I am manually reviewing. 
 
 In some cases I would like to have this review map in some file formats like txt, md or even HTML if visualization is needed
+
+The file name of review map should have this format yyyy-mm-dd_name-of-review-map.extension 
