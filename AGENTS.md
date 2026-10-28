@@ -48,3 +48,13 @@ When a question about Kueue comes up (architecture, scheduling, preemption,
 quotas, integrations, history, why something is the way it is), read the wiki
 first: start at `kueue-llm-wiki/wiki/index.md`, then the relevant pages. Check
 against the code when it matters, and say when the wiki has no answer.
+
+## Manual code review for important features
+
+manual review is labor intensive action, that evaluates approach/code style and etc etc, it is done by me manually so manual review must be done only for core logic and most important code. (Tests documentation and etc is not considered core logic)
+
+Review map - review document that splitted like book chapters, from start to finish
+
+When reviewing important features and code I would like to have a map, like a good book have start -> finish, the same TOC I want to have for files with explanation, I want to start manual review from entrypoint and have a good understanding and good story around the feature/code that I am manually reviewing. 
+
+In some cases I would like to have this review map in some file formats like txt, md or even HTML if visualization is needed
