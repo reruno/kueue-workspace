@@ -60,3 +60,8 @@ When reviewing important features and code I would like to have a map, like a go
 In some cases I would like to have this review map in some file formats like txt, md or even HTML if visualization is needed
 
 The file name of review map should have this format yyyy-mm-dd_name-of-review-map.extension 
+
+In the review map, write every code reference as a repo-relative path with a line
+number (for example `pkg/controller/jobs/sparkapplication/sparkapplication_webhook.go:140`),
+never a bare `:line` or a file name without its directory, so it can be pasted into
+Ctrl+P in VSCodium to jump straight to that line.
