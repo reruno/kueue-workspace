@@ -13,15 +13,18 @@ kueue-workspace/
 Kueue code happen there by default.
 
 When the developer says to work on an issue separately (not on main), create a
-copy of Kueue under `branches/`, named after the issue, as a Git worktree of
-`kueue-main` based on the latest `upstream/main`:
+copy of Kueue under `branches/` as a Git worktree of `kueue-main` based on the
+latest `upstream/main`. Name it `kueue-<suffix>`, where the suffix is the issue
+number it resolves (when there is one) plus a short description of the work,
+for example `kueue-18415-spark-elastic-cleanups`, or `kueue-spark-partial-preemption`
+without an issue. Never use only the number:
 
 ```sh
 git -C kueue-main fetch upstream
-git -C kueue-main worktree add ../branches/kueue-issue-<n> -b issue-<n>-<short-name> upstream/main
+git -C kueue-main worktree add ../branches/kueue-<n>-<short-name> -b issue-<n>-<short-name> upstream/main
 ```
 
-Then do all work for that issue in `branches/kueue-issue-<n>/`.
+Then do all work for that issue in `branches/kueue-<n>-<short-name>/`.
 
 Keep the issue's context (requirements, scope, relevant code and wiki
 pointers, how to verify) in `testbin/WORKTREE_CONTEXT.md` inside that copy.
