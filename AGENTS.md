@@ -52,16 +52,18 @@ Priorities:
   possible. P0 items always come first.
 - **P1** to **P4**: from high to low.
 
-Item format (indent `Links:`, `Desc:` and `Rec Action:` so they stay inside
-the list item):
+Item format. Write the `LINKS:`, `DESC:` and `REC ACTION:` labels in capitals so
+they stand out from the text, and indent them so they stay inside
+the list item:
 
 ```markdown
 1. [ ] Do x and y (P1)
-   Links:
+   LINKS:
    - https://github.com/kubernetes-sigs/kueue/pull/18064#discussion_r2501234567
    - `pkg/controller/jobs/sparkapplication/sparkapplication_controller.go:195`
-   Desc: Short context: the current state and why it matters.
-   Rec Action: Simple summary of the action to take next.
+   DESC: Short context: the current state and why it matters.
+   REC ACTION: Simple summary of the action to take next.
+   NOTE: Optional, written by the developer.
 ```
 
 - The developer marks an item done for the day by changing `[ ]` to `[x]`.
@@ -75,9 +77,14 @@ the list item):
 - Keep links few: only the ones the developer needs to act on the item,
   usually 1 or 2, at most 3 (one per PR when an item spans several PRs).
   Leave out background, outdated threads, and links an agent can find later
-  by looking into the item in detail; mention them in `Desc:` as counts
+  by looking into the item in detail; mention them in `DESC:` as counts
   (for example "3 outdated CodeRabbit threads") instead.
-- If there are no useful links, write `Links: none`.
+- If there are no useful links, write `LINKS: none`.
+- `NOTE:` is optional and belongs to the developer, who adds it by hand to
+  leave a remark on an item (for example, that it is blocked or what to keep
+  in mind). Never write, change, or remove a `NOTE:`. When carrying an item
+  over to a new day, copy its `NOTE:` as it is, and take it into account
+  when refreshing the item's priority, `DESC:` and `REC ACTION:`.
 
 ## Commits
 
