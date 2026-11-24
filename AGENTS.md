@@ -94,12 +94,65 @@ The developer is the sole owner and author of all code. Never add
 Commit messages are concise, simple, and meaningful: say what changed and,
 when not obvious, why.
 
-## Approach to solutions
+## Code quality
 
-Keep it simple (KISS): the solution should be as simple as possible, but not
-simpler. Solve the actual problem with the smallest clear change, prefer
-existing patterns and helpers over new abstractions, and avoid speculative
-generality. Don't cut corners on correctness, edge cases, or tests to get there.
+Apply these principles whenever you write or judge code: coding, making new
+solutions or designs, fixing bugs, refactoring, reviewing existing code, and
+reviewing PRs (your own changes too, before calling them done). When reviewing,
+check against them in order.
+
+Quality code is the simplest correct solution that fits naturally into the
+existing code (KISS: as simple as possible, but not simpler).
+
+1. **Simple.** Make the smallest clear change that solves the actual problem.
+   Every new function, variable, branch, or special case must justify itself
+   ("do we need it, and why?"). No speculative generality, no unneeded guards
+   or interim variables, and no scope wider than the problem (narrow a
+   generic change down to the integration that needs it).
+2. **Fits the existing code.** The new code should look like it was always
+   there:
+   - Reuse existing helpers, wrappers, interfaces, and patterns before
+     writing new ones. Search for them first.
+   - Follow local conventions for naming, structure, and API symmetry
+     (for example `Annotation(k, v)` like the existing `Label(k, v)`).
+   - Put logic where it conceptually belongs, not wherever it is easiest to
+     call.
+   - Treat the same field or concept the same way in every code path.
+3. **Reusable and flexible where it pays off.** Extract a helper when logic
+   actually repeats (for example identical across Job integrations) or when a
+   function does too much. Keep helpers as general as their names suggest,
+   and no more. Extend through existing extension points (`GenericJob`,
+   optional interfaces) rather than new abstractions. Some features need
+   flexibility; don't add it by default.
+4. **Clear and honest.** Names say exactly what a thing is or does. Comments
+   describe what the code does, not what it intends to do. No spaghetti: one
+   function does one job and reads top to bottom.
+5. **Correct.** Simplicity never excuses missing edge cases or tests: upgrade
+   safety, both feature-gate states, scheduler invariants, behaviour at scale.
+6. **One concern per change.** Keep refactors and fixes in separate PRs.
+
+The project-wide process bar (tests, API versioning, logging policy, release
+notes) is in `kueue-llm-wiki/wiki/code-quality.md`; the reviewer profiles
+linked from it show how maintainers apply these principles.
+
+You may use the ponytail skills (below) for code quality: `ponytail` while
+writing code, `ponytail-review` to review a change or PR, `ponytail-audit` to
+audit a package or folder.
+
+### Ponytail skills
+
+Skills live in `.agents/skills/<name>/SKILL.md`, a vendor-neutral place: an
+agent without native skill support reads the `SKILL.md` when its description
+fits the task. `.claude/skills` is a symlink to it, so Claude Code finds them.
+
+`.agents/skills/` has the ponytail skills, vendored from
+https://github.com/DietrichGebert/ponytail (MIT, commit `96608e0`):
+`ponytail` (smallest complete change), `ponytail-review` (review a diff),
+`ponytail-audit` (audit a folder or repo), `ponytail-debt` (list `shortcut:`
+markers). They back up the principles above; where they disagree, this file
+wins. Never put `shortcut:` or `ponytail:` marker comments in Kueue code:
+upstream reviewers ask to remove them. Say the limit in a normal comment, or
+in the PR description.
 
 ## Answering questions
 
